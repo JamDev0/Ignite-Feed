@@ -1,6 +1,7 @@
-import EditIcon from '../../public/images/EditIcon.svg';
-
 import Styles from './SideBar.module.css'
+import { PencilSimpleLine } from 'phosphor-react';
+import { ProfileImage } from './ProfileImage';
+
 
 export function SideBar(){
     return(
@@ -9,14 +10,20 @@ export function SideBar(){
 
             </div>
             <div className={Styles.ContentDiv}>
-                <div className={Styles.UserAvatar}>
-                    <img src='https://avatars.githubusercontent.com/u/61752887?v=4'></img>
-                </div>
+                <ProfileImage 
+                 Image='https://avatars.githubusercontent.com/u/61752887?v=4'
+                 style={
+                    {
+                        position: 'relative',
+                        transform: 'translateY(-50%)',
+                    }
+                 } 
+                />
                 <h2>Juan Garcia</h2>
                 <span>Ui Designer</span>
                 <footer>
                     <a href='#'>
-                        <img src={EditIcon}></img>
+                        <PencilSimpleLine size={20}/>
                         Editar seu perfil
                     </a>
                 </footer>

@@ -1,9 +1,9 @@
 .SideBar {
-    grid-area: sideBar;
+    grid-area: SideBar;
 
     border-radius: 8px;
 
-    width: 250px;
+    width: 100%;
     height: min-content;
 
     overflow: hidden;
@@ -26,29 +26,7 @@
     align-items: center;
 }
 
-.UserAvatar{
-    position: relative;
-
-    transform: translateY(-50%);
-
-    width: 3.75rem;
-    height: 3.75rem;
-
-    padding: 3px;
-
-    border: 3px solid var(--green-500);
-    border-radius: 8px;
-
-    background-color: var(--gray-800);
-}
-
-.UserAvatar > img {
-    width: 100%;
-
-    border-radius: 5px;
-}
-
-.ContentDiv > h2 {
+.ContentDiv  h2 {
     font-size: 1rem;
     color: var(--gray-100);
     font-weight: bold;
@@ -56,11 +34,11 @@
     margin-bottom: 10px;
 }
 
-.ContentDiv > span {
+.ContentDiv  span {
     font-size: 0.88rem;
 }
 
-footer{
+.SideBar footer{
     width: 100%;
     
     border-top: 2px solid var(--gray-600);
@@ -69,7 +47,7 @@ footer{
     margin-top: 1.5rem;
 }
 
-footer > a {
+.SideBar footer  a {
     background: transparent;
     color: var(--green-500);
     border: 1px solid var(--green-500);
@@ -86,6 +64,30 @@ footer > a {
     column-gap: 0.625rem;
 }
 
-footer > a > img{
+.SideBar footer  a {
+    background: transparent;
+    color: var(--green-500);
+    border: 1px solid var(--green-500);
+    border-radius: 8px;
+    height: 50px;
+    padding: 0 1.5rem;
+    font-weight: bold;
+    display: block;
+    text-decoration: none;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: 0.625rem;
+
+    transition: color 0.2s ease-in-out;
+}
+
+.SideBar footer  a:hover {
+    background: var(--green-500);
+    color: var(--gray-100);
+}
+
+.SideBar footer  a  img{
     width: 1.25rem;
 }

@@ -1,0 +1,9 @@
+.Body{
+    display: grid;
+
+    grid-template-areas: 'SideBar Feed';
+    grid-template-columns: 25% 75%;
+    column-gap: 32px;
+
+    padding: 32px 160px 148px 160px;
+}
