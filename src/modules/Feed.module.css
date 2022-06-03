@@ -59,4 +59,64 @@
     flex-direction: column;
 
     row-gap: 25.6px;
+
+    color: var(--gray-300);
+}
+
+.Post footer {
+    display: flex;
+    flex-direction: column;
+    row-gap: 16px;
+    align-items: flex-start;
+
+    border-top: 2px solid var(--gray-600);
+    padding-top: 24px;
+}
+.Post footer h2 {
+    font-size: 1rem;
+    color: var(--gray-100);
+    font-weight: bold;
+}
+
+.Post footer textarea {
+    align-self: stretch;
+
+    background-color: var(--gray-900);
+
+    border-radius: 8px;
+    border: 1px solid var(--green-500);
+
+    font-size: 1rem;
+    color: var(--gray-300);
+
+    padding: 13px 16px;
+
+    resize: none;
+
+    outline: none;
+}
+
+.Post footer textarea::placeholder {
+    color: var(--gray-500);
+}
+
+.Post footer button {
+    background-color: var(--green-500);
+
+    border-radius: 8px;
+    border: none;
+
+    padding: 16px 24px 14px 24px;
+
+    font-size: 1rem;
+    color: var(--gray-100);
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: background-color 0.2s ease-in-out;
+}
+
+.Post footer button:hover{
+    background-color: var(--green-400);
 }
