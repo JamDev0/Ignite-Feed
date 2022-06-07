@@ -1,8 +1,8 @@
-import Styles from './FeedMain.module.css';
+import Styles from './PostMain.module.css';
 
-export function FeedMain(){
+export function PostMain(){
     return(
-        <main>
+        <main className={Styles.Main}>
             <p>
                 Fala galeraa 👋
             </p>
