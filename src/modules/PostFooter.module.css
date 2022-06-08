@@ -80,6 +80,15 @@
     background-color: var(--green-400);
 }
 
+.PublishBtn:disabled:hover {
+    background-color: var(--green-500);
+    cursor: default;
+}
+
+.PublishBtn:disabled {
+    opacity: 60%;
+}
+
 .CancelBtn {
     background-color: var(--gray-600);
 

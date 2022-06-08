@@ -48,6 +48,7 @@ export function PostFooter({ Comments }) {
                  value={TextareaValue}
                  onChange={(event) => {setTextareaValue(event.target.value)}}
                  onFocus={ () => !IsCreatingComment ? setIsCreatingComment(!IsCreatingComment) : null}
+                 required
                 >
 
                 </textarea>
@@ -59,6 +60,7 @@ export function PostFooter({ Comments }) {
                             <button
                             name='Publish'
                             className={Styles.PublishBtn}
+                            disabled={TextareaValue.length <= 0 }
                             >
                                 Publicar
                             </button>
@@ -72,6 +74,7 @@ export function PostFooter({ Comments }) {
                     )
                     : null
                 }
+                {/* ajeitar o botom de cancel que não funciona se o textarea não estiver preenchida */}
             </form>
 
             {
