@@ -1,25 +1,42 @@
+import { useEffect, useState } from 'react';
 import Styles from './Feed.module.css';
 import { Post } from './Post';
 
 
 export function Feed(){
+    const [Comments, setComments] = useState();
+    const [Posts, setPosts] = useState();
+
+    async function GetComments(URL) {
+        return fetch(URL).then(response => response.json()).then(data => {return data});
+    }
+
+    async function GetPosts(URL) {
+        return fetch(URL).then(response => response.json()).then(data => {return data});
+    }
+
+    useEffect(()=>{
+        GetComments('../Jsons/Comments.json').then(data => setComments(data));
+        GetPosts('../Jsons/Posts.json').then(data => setPosts(data));
+    }, [])
+
+    console.log(Posts)
+
     return(
         <section className={Styles.Feed}>
-            <Post
-             PublishTime={1}
-             ProfilePic={'https://images.unsplash.com/photo-1552058544-f2b08422138a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=200&q=50'}
-             UserName={'Higor Penumbra'}
-             UserRole={'Dev Front-End'}
-             Comments={[]}
-            />
-
-            <Post
-             PublishTime={2}
-             ProfilePic={'https://images.unsplash.com/photo-1555952517-2e8e729e0b44?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=464&q=60'}
-             UserName={'Leonard Maverik'}
-             UserRole={'Dev Back-End'}
-             Comments={[]}
-            />
+            {
+                Posts?.map(({ Id, Content }) => (
+                    <Post
+                     key={Id}
+                     PublishTime={Content.PublishTime}
+                     ProfilePic={Content.ProfilePic}
+                     UserName={Content.UserName}
+                     UserRole={Content.UserRole}
+                     Comments={Comments?.find(element => element.Id == Content.CommentId)?.Content.length > 0 ? Comments.find(element => element.Id == Content.CommentId)?.Content : []}
+                     Content={Content.Content}
+                    />
+                ))
+            }
         </section>
     )    
 }

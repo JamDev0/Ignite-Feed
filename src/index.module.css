@@ -2,8 +2,22 @@
     display: grid;
 
     grid-template-areas: 'SideBar Feed';
-    grid-template-columns: 30% 70%;
+    grid-template-columns: 256px 1fr;
     column-gap: 32px;
+    row-gap: 32px;
 
-    padding: 32px 6rem 148px 6rem;
+    max-width: 78rem;
+    margin: 2rem auto;
+    padding: 0px 1rem;
+}
+
+@media (max-width: 768px) {
+    html {
+        font-size: 87.5%;
+    }
+
+    .Body {
+        grid-template-areas: 'SideBar' 'Feed';
+        grid-template-columns: 1fr;
+    }
 }

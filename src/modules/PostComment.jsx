@@ -1,43 +1,57 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { ThumbsUp, Trash } from 'phosphor-react';
 
 import Styles from './PostComment.module.css';
 
-export function PostComment({ProfilePic, UserName, IsTheCurrentUser, PublishTime, Content}){
+export function PostComment({Comment, DeleteComment}){
     const [LikesAmount, setLikesAmount] = useState(3);
-    const [IsLikePressed, setIsLikePressed] = useState(false)
+    const [IsLikePressed, setIsLikePressed] = useState(false);
 
+    useEffect(()=>{
+        setLikesAmount(Comment.LikesAmount);
+    }, [])
+    
+    function HandleDeleteComment() {
+        console.log(Comment.Id);
+        DeleteComment(Comment.Id);
+    }
+    
     return(
         <div className={Styles.Comment}>
-            <img src={ProfilePic}></img>
+            <img src={Comment.ProfilePic}></img>
             <div className={Styles.Content}>
                 {
-                    IsTheCurrentUser
-                    ? <Trash className={Styles.Trash}/>
+                    Comment.IsTheCurrentUser
+                    ? <Trash
+                       title='Deletar comentário'
+                       tabIndex={0}
+                       className={Styles.Trash}
+                       onClick={HandleDeleteComment}
+                      />
                     : null
                 }
                 <header>
                     {
-                        IsTheCurrentUser 
+                        Comment.IsTheCurrentUser
                         ? (
                             <div>
-                                <h2>{UserName}</h2>
+                                <h2>{Comment.UserName}</h2>
                                 <span>(você)</span>
                             </div>
                         )
-                        : <h2>{UserName}</h2>
+                        : <h2>{Comment.UserName}</h2>
                     }
-                    <span>Cerca de {PublishTime}h</span>
+                    <time title='Públicado em 31 de maio de 2050' dateTime='2050-05-31 00:00:00'>Cerca de {Comment.PublishTime}h</time>
                 </header>
                 <p>
-                    {Content}
+                    {Comment.Content}
                 </p>
             </div>
             <div
              className={Styles.Reactions}
              onClick={()=> {setIsLikePressed(!IsLikePressed); IsLikePressed ? setLikesAmount(LikesAmount - 1) : setLikesAmount(LikesAmount + 1)}}
-             notFocus={IsLikePressed ? 'true' : 'false'}
+             notfocus={IsLikePressed ? 'true' : 'false'}
             >
                     <ThumbsUp
                      weight='bold'

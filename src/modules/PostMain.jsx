@@ -1,20 +1,36 @@
 import Styles from './PostMain.module.css';
 
-export function PostMain(){
+export function PostMain({Content}){
+
+    console.log(Content)
+
     return(
         <main className={Styles.Main}>
-            <p>
-                Fala galeraa 👋
-            </p>
-            <p>
-                Acabei de subir mais um projeto no meu portifa. É um projeto que fiz no NLW Return, evento da Rocketseat. O nome do projeto é DoctorCare 🚀
-            </p>
-            <p className={Styles.GreenText}>
-                👉 higor.design/doctorcare
-            </p>
-            <p className={Styles.GreenText}>
-                #novoprojeto #nlw #rocketseat
-            </p>
+            {
+                Content?.map((element, index) => {
+                    switch(element.Type){
+                        case "Paragraph":
+                            return(
+                                <p
+                                key={index}
+                                >
+                                    {element.Content}
+                                </p>
+                            );
+                            break;
+                        case "Link":
+                            return (
+                                <a
+                                 href=''
+                                 key={index}
+                                >
+                                    {element.Content}
+                                </a>
+                            );
+                            break;
+                    }
+                })
+            }
         </main>
     )
 }

@@ -34,6 +34,9 @@
     grid-area: Img;
 
     width: 3.12rem;
+    height: 3.12rem;
+
+    object-fit: cover;
 
     border-radius: 8px;
 }
@@ -71,7 +74,7 @@
     font-size: 0.85rem;
 }
 
-.Content header span {
+.Content header time {
     font-size: 0.75rem;
     color: var(--gray-400);
 }
@@ -95,7 +98,7 @@
     transition: color 0.2s linear;
 }
 
-.Reactions:hover[notFocus=false] * {
+.Reactions:hover[notfocus=false] * {
     color: var(--gray-100);
 }
 

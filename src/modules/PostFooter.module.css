@@ -7,13 +7,23 @@
     border-top: 2px solid var(--gray-600);
     padding-top: 24px;
 }
-.Footer h2 {
+
+.Footer form {
+    display: flex;
+    flex-direction: column;
+    row-gap: 16px;
+    align-items: flex-start;
+
+    width: 100%;
+}
+
+.Footer form h2 {
     font-size: 1rem;
     color: var(--gray-100);
     font-weight: bold;
 }
 
-.Footer textarea {
+.Footer form textarea {
     align-self: stretch;
 
     background-color: var(--gray-900);
@@ -31,15 +41,15 @@
     outline: none;
 }
 
-.Footer textarea:focus {
+.Footer form textarea:focus {
     outline: 1px solid var(--green-500);
 }
 
-.Footer textarea::placeholder {
+.Footer form textarea::placeholder {
     color: var(--gray-500);
 }
 
-.Footer button {
+.Footer form button {
     border-radius: 8px;
 
     padding: 16px 24px 14px 24px;

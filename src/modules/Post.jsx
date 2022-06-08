@@ -7,7 +7,7 @@ import { PostMain } from "./PostMain";
 export function Post({ ProfilePic, UserName, UserRole, PublishTime, Content, Comments }){
     return(
         <section className={Styles.Post}>
-            <span className={Styles.PublishTime}>Públicado há {PublishTime}h</span>
+            <time title='Públicado em 31 de maio de 2050' dateTime='2050-05-31 00:00:00' className={Styles.PublishTime}>Públicado há {PublishTime}h</time>
             <PostHeader
              ProfilePic={ProfilePic}
              UserName={UserName}
