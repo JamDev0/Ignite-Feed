@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
+
 import Styles from './Feed.module.css';
+
 import { Post } from './Post';
 
 
@@ -20,7 +22,11 @@ export function Feed(){
         GetPosts('../Jsons/Posts.json').then(data => setPosts(data));
     }, [])
 
-    console.log(Posts)
+    function FindTheRelatedCommentsArray(Content) {
+        let DoRelatedCommentsArrayExist = Comments?.find(Comment => Comment.Id === Content.CommentId)?.Content.length > 0;
+
+        return DoRelatedCommentsArrayExist ? Comments.find(element => element.Id == Content.CommentId).Content : [];
+    }
 
     return(
         <section className={Styles.Feed}>
@@ -32,7 +38,7 @@ export function Feed(){
                      ProfilePic={Content.ProfilePic}
                      UserName={Content.UserName}
                      UserRole={Content.UserRole}
-                     Comments={Comments?.find(element => element.Id == Content.CommentId)?.Content.length > 0 ? Comments.find(element => element.Id == Content.CommentId)?.Content : []}
+                     Comments={FindTheRelatedCommentsArray(Content)}
                      Content={Content.Content}
                     />
                 ))

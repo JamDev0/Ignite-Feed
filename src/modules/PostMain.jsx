@@ -2,8 +2,6 @@ import Styles from './PostMain.module.css';
 
 export function PostMain({Content}){
 
-    console.log(Content)
-
     return(
         <main className={Styles.Main}>
             {
@@ -17,7 +15,7 @@ export function PostMain({Content}){
                                     {element.Content}
                                 </p>
                             );
-                            break;
+                            
                         case "Link":
                             return (
                                 <a
@@ -27,7 +25,6 @@ export function PostMain({Content}){
                                     {element.Content}
                                 </a>
                             );
-                            break;
                     }
                 })
             }

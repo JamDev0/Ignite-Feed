@@ -9,7 +9,7 @@ export function PostFooter({ Comments }) {
     const [CurrentComments, setCurrentComments] = useState(Comments);
     const [TextareaValue, setTextareaValue] = useState('');
 
-    console.log(Comments)
+    let DoCommentsExist = CurrentComments.length > 0;
 
     function HandleCreateNewComment(){
         event.preventDefault();
@@ -36,49 +36,49 @@ export function PostFooter({ Comments }) {
         setCurrentComments(CurrentComments.filter(element => element.Id !== CommentId));
     }
 
+
     return(
         <footer className={Styles.Footer}>
             <form
              onSubmit={HandleCreateNewComment}
             >
                 <h2>Deixe seu feedback</h2>
+                
                 <textarea
                  name='Textarea'
                  placeholder='Escreva um comentário...'
                  value={TextareaValue}
                  onChange={(event) => {setTextareaValue(event.target.value)}}
                  onFocus={ () => !IsCreatingComment ? setIsCreatingComment(!IsCreatingComment) : null}
-                 required
                 >
 
                 </textarea>
 
                 {
                     IsCreatingComment
-                    ? (
+                    ? 
                         <div className={Styles.Buttons}>
                             <button
-                            name='Publish'
-                            className={Styles.PublishBtn}
-                            disabled={TextareaValue.length <= 0 }
+                             name='Publish'
+                             className={Styles.PublishBtn}
+                             disabled={TextareaValue.length <= 0 }
                             >
                                 Publicar
                             </button>
                             <button
-                            name='Cancel'
-                            className={Styles.CancelBtn}
+                             name='Cancel'
+                             className={Styles.CancelBtn}
                             >
                                 Cancelar
                             </button>
                         </div>
-                    )
                     : null
                 }
-                {/* ajeitar o botom de cancel que não funciona se o textarea não estiver preenchida */}
+                
             </form>
 
             {
-                CurrentComments.length > 0
+                DoCommentsExist
                 ? CurrentComments.map((element) => {
                     console.log(element)
                     return (<PostComment

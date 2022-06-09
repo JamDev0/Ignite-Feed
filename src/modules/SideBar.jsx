@@ -1,5 +1,7 @@
 import Styles from './SideBar.module.css'
+
 import { PencilSimpleLine } from 'phosphor-react';
+
 import { ProfileImage } from './ProfileImage';
 
 

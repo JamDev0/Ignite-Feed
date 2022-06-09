@@ -76,17 +76,13 @@
     transition: background-color 0.2s ease-in-out;
 }
 
-.PublishBtn:hover{
+.PublishBtn:hover:not(:disabled){
     background-color: var(--green-400);
-}
-
-.PublishBtn:disabled:hover {
-    background-color: var(--green-500);
-    cursor: default;
 }
 
 .PublishBtn:disabled {
     opacity: 60%;
+    cursor: not-allowed;
 }
 
 .CancelBtn {

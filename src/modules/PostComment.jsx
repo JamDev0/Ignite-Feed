@@ -13,44 +13,56 @@ export function PostComment({Comment, DeleteComment}){
     }, [])
     
     function HandleDeleteComment() {
-        console.log(Comment.Id);
         DeleteComment(Comment.Id);
     }
     
     return(
         <div className={Styles.Comment}>
-            <img src={Comment.ProfilePic}></img>
+            <img src={Comment.ProfilePic} alt='Imagem de perfil do usuário'></img>
             <div className={Styles.Content}>
                 {
-                    Comment.IsTheCurrentUser
-                    ? <Trash
-                       title='Deletar comentário'
-                       tabIndex={0}
-                       className={Styles.Trash}
-                       onClick={HandleDeleteComment}
-                      />
+                    Comment.IsTheCurrentUser ? 
+                        <Trash
+                         title='Deletar comentário'
+                         tabIndex={0}
+                         className={Styles.Trash}
+                         onClick={HandleDeleteComment}
+                        />
                     : null
                 }
                 <header>
+
                     {
-                        Comment.IsTheCurrentUser
-                        ? (
+                        Comment.IsTheCurrentUser ? 
                             <div>
                                 <h2>{Comment.UserName}</h2>
                                 <span>(você)</span>
                             </div>
-                        )
-                        : <h2>{Comment.UserName}</h2>
+                        : 
+                            <h2>
+                                {Comment.UserName}
+                            </h2>
                     }
-                    <time title='Públicado em 31 de maio de 2050' dateTime='2050-05-31 00:00:00'>Cerca de {Comment.PublishTime}h</time>
+
+                    <time
+                     title='Públicado em 31 de maio de 2050'
+                     dateTime='2050-05-31 00:00:00'
+                    >
+                        Cerca de {Comment.PublishTime}h
+                    </time>
+
                 </header>
                 <p>
                     {Comment.Content}
                 </p>
             </div>
+
             <div
              className={Styles.Reactions}
-             onClick={()=> {setIsLikePressed(!IsLikePressed); IsLikePressed ? setLikesAmount(LikesAmount - 1) : setLikesAmount(LikesAmount + 1)}}
+             onClick={()=> {
+                 setIsLikePressed(!IsLikePressed);
+                 IsLikePressed ? setLikesAmount(LikesAmount - 1) : setLikesAmount(LikesAmount + 1);
+                }}
              notfocus={IsLikePressed ? 'true' : 'false'}
             >
                     <ThumbsUp

@@ -1,8 +1,8 @@
 import { Header } from "./modules/Header";
 import { SideBar } from "./modules/SideBar";
-
-import Styles from './index.module.css';
 import { Feed } from "./modules/Feed";
+
+import Styles from './App.module.css';
 
 export function App(){
     return(
